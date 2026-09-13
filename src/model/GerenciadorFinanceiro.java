@@ -42,4 +42,39 @@ public class GerenciadorFinanceiro {
     public double getRendaMensal() {
         return this.rendaMensal;
     }
+    
+    public void exibirAnalisePercentual() {
+        double totalGasto = calcularTotalDespesas();
+        
+        if (totalGasto == 0) {
+            System.out.println("\nNenhuma despesa cadastrada para calcular percentuais.");
+            return;
+        }
+
+        System.out.println("\n--- Análise Percentual de Gastos ---");
+        
+        // Usando ArrayList para guardar as categorias que já calculamos (atende ao requisito do PDF)
+        ArrayList<String> categoriasProcessadas = new ArrayList<>();
+        
+        for (Despesa d : listaDespesas) {
+            String categoriaAtual = d.getCategoria();
+            
+            // Se a categoria ainda não foi calculada, fazemos a soma dela
+            if (!categoriasProcessadas.contains(categoriaAtual)) {
+                double somaCategoria = 0;
+                
+                for (Despesa despesaInterna : listaDespesas) {
+                    if (despesaInterna.getCategoria().equalsIgnoreCase(categoriaAtual)) {
+                        somaCategoria += despesaInterna.getValor();
+                    }
+                }
+                
+                double percentual = (somaCategoria / totalGasto) * 100;
+                System.out.printf("Categoria: %s | Total Gasto: R$ %.2f | Representa: %.2f%% dos gastos\n", 
+                                  categoriaAtual, somaCategoria, percentual);
+                
+                categoriasProcessadas.add(categoriaAtual);
+            }
+        }
+    }
 }

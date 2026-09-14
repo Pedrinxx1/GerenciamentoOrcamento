@@ -11,6 +11,7 @@
   <strong>Letícia Liz Benigno da Silva</strong><br>
   <strong>Pedro Henrique Eduardo Ribeiro Costa</strong><br><br><br>
   <strong>SISTEMA GERENCIADOR DE ORÇAMENTO PESSOAL</strong><br><br><br>
+  <strong>Professor: Hudson Neves e Silva<br><br><br>
   Gama - DF<br>
   2026
 </div>
